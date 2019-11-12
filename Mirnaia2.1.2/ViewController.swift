@@ -21,9 +21,9 @@ class ViewController: UIViewController {
         redLight.alpha = 0.3
         yellowLight.alpha = 0.3
         greenLight.alpha = 0.3
-        redLight.layer.cornerRadius = 75
-        yellowLight.layer.cornerRadius = 75
-        greenLight.layer.cornerRadius = 75
+        redLight.layer.cornerRadius = 77
+        yellowLight.layer.cornerRadius = 77
+        greenLight.layer.cornerRadius = 77
         controlButton.layer.cornerRadius = 10
     }
     
