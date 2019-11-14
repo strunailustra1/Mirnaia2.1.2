@@ -13,33 +13,44 @@ class ViewController: UIViewController {
     @IBOutlet var redLight: UIView!
     @IBOutlet var yellowLight: UIView!
     @IBOutlet var greenLight: UIView!
+    
     @IBOutlet var controlButton: UIButton!
+    
     var currentState = 0
+    
+    private let lightsOff: CGFloat = 0.3
+    private let lightsOn: CGFloat = 1
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redLight.alpha = 0.3
-        yellowLight.alpha = 0.3
-        greenLight.alpha = 0.3
-        redLight.layer.cornerRadius = 77
-        yellowLight.layer.cornerRadius = 77
-        greenLight.layer.cornerRadius = 77
+
+        redLight.alpha = lightsOff
+        yellowLight.alpha = lightsOff
+        greenLight.alpha = lightsOff
+        
         controlButton.layer.cornerRadius = 10
     }
     
+    
+    override func viewWillLayoutSubviews() {
+        redLight.layer.cornerRadius = redLight.frame.width / 2
+        yellowLight.layer.cornerRadius = yellowLight.frame.width / 2
+        greenLight.layer.cornerRadius = greenLight.frame.width / 2
+    }
     @IBAction func buttonPressed() {
         controlButton.setTitle("NEXT", for: .normal)
         currentState += 1
         switch currentState % 3 {
         case 1:
-            greenLight.alpha = 0.3
-            redLight.alpha = 1
+            greenLight.alpha = lightsOff
+            redLight.alpha = lightsOn
         case 2:
-            redLight.alpha = 0.3
-            yellowLight.alpha = 1
+            redLight.alpha = lightsOff
+            yellowLight.alpha = lightsOn
         case 0:
-            yellowLight.alpha = 0.3
-            greenLight.alpha = 1
+            yellowLight.alpha = lightsOff
+            greenLight.alpha = lightsOn
         default:
             break
         }
